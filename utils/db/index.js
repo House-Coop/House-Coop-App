@@ -2,7 +2,10 @@ var CONST = require('../../constants');
 
 //Import the mongoose module
 let mongoose = require('mongoose');
-let mongoDB = process.env.MONGO_SERVER + ":" + process.env.MONGO_PORT + "/" + process.env.MONGO_DB;
+
+
+let mongoDB = process.env.MONGODB_URI || process.env.MONGO_SERVER + ":" + process.env.MONGO_PORT + "/" + process.env.MONGO_DB;	
+
 
 
 module.exports.db = async function(){
