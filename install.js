@@ -34,13 +34,13 @@ zr.runScript({script: keygen_contract})
 	//now we got the keys, we append them to the .env file.
 	const fs = require("fs");
 	fs.readFile(".env", (err, data) => {
+		let _data = data || "";
 		if(err){
-			console.log(">> Error when accessing .env file");
-			process.exit(1);
+			console.log(">> No .env file present");
 		}
-		fs.writeFile(".env",data + "\n" + keys, err => {
+		fs.writeFile(".env",_data + "\n" + keys, err => {
 			if(err){
-				console.log(">> Error when writing .env file");
+				console.log(">> Error when writing .env file", err);
 				process.exit(1);
 			}
 			console.log(">> Succesfully generated keys and appended to .env file");

@@ -1,7 +1,7 @@
 {
-  "name": "EquitableOS",
-  "version": "0.0.1",
-  "private": true,
+  "name": "houseCoop",
+  "version": "0.1.0",
+  "private": false,
   "scripts": {
     "start": "node install.js && nodemon ./bin/www"
   },
@@ -26,5 +26,7 @@
     "uuid": "^3.3.3",
     "validator": "^12.1.0",
     "zenroom": "1.0.0"
-  }
+  },
+  "licence" : "AGPL-3.0",
+  "homepage" : "https://www.housecoop.org"
 }
