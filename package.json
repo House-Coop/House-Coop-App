@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "start": "node install.js && nodemon ./bin/www"
+    "start": "node install.js && node ./bin/www",
+    "dev": "node install.js && nodemon ./bin/www"
   },
   "dependencies": {
     "@babel/core": "^7.8.3",
