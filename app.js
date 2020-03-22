@@ -134,9 +134,23 @@ const serveStatic = require('serve-static');
 const CONST = require('./constants.js')
 
 app.use(serveStatic(__dirname + "/dist"));
-app.use("/uploads",serveStatic(__dirname + "/uploads"));
-app.use("/private",auth.setPrivilegeLevel(CONST.USER_PRIVILEGE_MEMBER),serveStatic(__dirname + "/private"));
 
+/**
+ * Serving static files from Heroku is not possible. So we have to create a work-around
+ */
+if(process.env.NODE_ENV == "dev"){
+
+	app.use("/uploads",serveStatic(__dirname + "/uploads"));
+	app.use("/private",auth.setPrivilegeLevel(CONST.USER_PRIVILEGE_MEMBER),serveStatic(__dirname + "/private"));
+
+} else {
+	
+	//solution goes here.
+
+	app.use("/uploads",serveStatic(__dirname + "/uploads"));
+	app.use("/private",auth.setPrivilegeLevel(CONST.USER_PRIVILEGE_MEMBER),serveStatic(__dirname + "/private"));
+
+}
 
 /**
  * Gotta catch 'm all
@@ -153,7 +167,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if(process.env.NODE_ENV == "dev"){
 	app.use(function(err, req, res, next) {
 		res.status(err.status || 500).json({
 			message: err.message,

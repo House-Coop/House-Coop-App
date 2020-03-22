@@ -41,37 +41,50 @@ InstanceSchema.set('toJSON', { virtuals: true });
 *
 *************/
 
-async function generateAppCredentials(_username){
+// async function generateAppCredentials(_username){
 
-	const username = _username || "User";
+// 	const username = "APP";
 
-	const params = {
-		"script": ` rule check version 1.0.0
-					Scenario 'simple': Create the keypair
-					Given that I am known as '${username}'
-					When I create the keypair
-					Then print my data`,
-		"data": {},
-		"keys": {},
-		"conf": CONST.zenroomSettings,
-	}
+// 	const params = {
+// 		"script": ` rule check version 1.0.0
+// 					Scenario 'simple': Create the keypair
+// 					Given that I am known as '${username}'
+// 					When I create the keypair
+// 					Then print my data`,
+// 		"data": {},
+// 		"keys": {},
+// 		"conf": CONST.zenroomSettings,
+// 	}
 
-	const ZR = new zenroomHelper();
-	return ZR.runScript(params);
-}
+// 	const ZR = new zenroomHelper();
+// 	return ZR.runScript(params);
+// }
 
 
+
+// async function addKeyPair(next){
+
+// 	const keyPair = await generateAppCredentials(this.title);
+// 	const _publicKey = keyPair[this.title].keypair.public_key;
+
+// 	this.publicKey = _publicKey;
+
+// 	console.log(this);
+
+
+// 	next();
+
+
+// }
 
 async function addKeyPair(next){
 
-	const keyPair = await generateAppCredentials(this.title);
-	const _publicKey = keyPair[this.title].keypair.public_key;
+	const _publicKey = process.env.ADMIN_PUBLIC_KEY;
 
 	this.publicKey = _publicKey;
 
-	console.log(this);
-
-
+	console.log(">> Instance > added public key: ", this);
+	
 	next();
 
 

@@ -32,7 +32,7 @@ var CONST = require('../constants.js');
 var Instance = require('../models/instance.js'); //this model does not exist yet.
 
 
-_api.post("/", function(req, res, next) {
+_api.post("/", auth.setPrivilegeLevel(CONST.USER_PRIVILEGE_ADMIN), function(req, res, next) {
 	
 	let _input = {
 		title:req.body.title, 
