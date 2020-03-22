@@ -38,7 +38,7 @@ zr.runScript({script: keygen_contract})
 		if(err){
 			console.log(">> No .env file present");
 		}
-		fs.writeFile(".env",_data + "\n" + keys, err => {
+		fs.appendFile(".env", keys, err => {
 			if(err){
 				console.log(">> Error when writing .env file", err);
 				process.exit(1);

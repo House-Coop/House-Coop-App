@@ -5,6 +5,7 @@ if(env.error) throw new Error(env.error);
 
 //make an instance of express
 const express = require('express');
+const fs = require('fs');
 
 //middleware
 const cors = require('cors');
@@ -20,13 +21,22 @@ const app = express();
 /**
  * HTTPS
  */
-const https = require('https');
-const fs = require('fs');
 
-https.createServer({
-  key: fs.readFileSync(process.env.SSL_CERT_KEY),
-  cert: fs.readFileSync(process.env.SSL_CERT)
-}, app).listen(parseInt(process.env.SSL_PORT));
+if(process.env.NODE_ENV == "dev"){
+	const https = require('https');
+
+	https.createServer({
+	  key: fs.readFileSync(process.env.SSL_CERT_KEY),
+	  cert: fs.readFileSync(process.env.SSL_CERT)
+	}, app).listen(parseInt(process.env.SSL_PORT));
+
+} else {
+	app.set("port", process.env.PORT || 3000);
+	app.listen(process.env.PORT, function () {
+		console.log('Server started on port: ' + process.env.PORT);
+	});
+}
+
 
 
 /**
@@ -65,7 +75,7 @@ if(process.env.NODE_ENV == "dev"){
 	app.use(cors({
 		origin: true,
 		credentials: true
-	}));	
+		}));	
 } else {
 	console.log(`App >> No CORS. `)
 
