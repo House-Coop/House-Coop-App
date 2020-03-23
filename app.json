@@ -3,5 +3,9 @@
   "description": "Host your own online cooperative",
   "repository": "https://github.com/House-Coop/House-Coop-App.git",
   "logo": "http://housecoop.org/images/housecoop-icon.svg",
-  "keywords": ["node", "coop", "housing", "democracy"]
+  "keywords": ["node", "coop", "housing", "democracy"],
+  "success_url" : "/register",
+  "addons" : [  "mongolab:sandbox"  ]
+
 }
+
