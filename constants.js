@@ -57,9 +57,9 @@ const constants = {
 
 	//MONGO LOCAL
 
-	MONGO_SERVER=mongodb://127.0.0.1:27017
-	MONGO_PORT=27017
-	MONGO_DB=equitable_os
+	MONGO_SERVER:"mongodb://127.0.0.1:27017",
+	MONGO_PORT:"27017",
+	MONGO_DB:"equitable_os",
 
 	//STUB
     keypairAdmin:{     
