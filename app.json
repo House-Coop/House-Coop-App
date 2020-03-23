@@ -1,7 +1,7 @@
 {
   "name": "House.coop",
   "description": "Host your own online cooperative",
-  "repository": "https://bitbucket.org/theincmac/equitableos/src/master/",
+  "repository": "https://github.com/House-Coop/House-Coop-App.git",
   "logo": "http://housecoop.org/images/housecoop-icon.svg",
   "keywords": ["node", "coop", "housing", "democracy"]
 }
