@@ -4,7 +4,7 @@ var CONST = require('../../constants');
 let mongoose = require('mongoose');
 
 
-let mongoDB = process.env.MONGODB_URI || process.env.MONGO_SERVER + ":" + process.env.MONGO_PORT + "/" + process.env.MONGO_DB;	
+let mongoDB = process.env.MONGODB_URI || CONST.MONGO_SERVER + ":" + CONST.MONGO_PORT + "/" + CONST.MONGO_DB;	
 
 
 

@@ -1,7 +1,7 @@
-
 //expose the environmental variables
 const env = require('dotenv').config();
 if(env.error) throw new Error(env.error);
+const CONST = require('./constants.js')
 
 //make an instance of express
 const express = require('express');
@@ -15,20 +15,22 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 
+
 //init app
 const app = express();
+
 
 /**
  * HTTPS
  */
 
-if(process.env.NODE_ENV == "dev"){
+if(CONST.NODE_ENV == "dev"){
 	const https = require('https');
 
 	https.createServer({
-	  key: fs.readFileSync(process.env.SSL_CERT_KEY),
-	  cert: fs.readFileSync(process.env.SSL_CERT)
-	}, app).listen(parseInt(process.env.SSL_PORT));
+	  key: fs.readFileSync(CONST.SSL_CERT_KEY),
+	  cert: fs.readFileSync(CONST.SSL_CERT)
+	}, app).listen(parseInt(CONST.SSL_PORT));
 
 } else {
 	app.set("port", process.env.PORT || 3000);
@@ -39,28 +41,6 @@ if(process.env.NODE_ENV == "dev"){
 
 
 
-/**
- * FILE UPLOAD
- */
-
-
-//this doens't seem to work..
-// const fileUpload = require('express-fileupload');
-
-// app.use(fileUpload({
-// 	useTempFiles : true,
-//     tempFileDir : '/tmp/',
-//     debug: true,
-//     safeFileNames: true
-// }));
-
-
-
-
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -70,7 +50,7 @@ app.use(cookieParser());
 app.disable('x-powered-by');
 
 
-if(process.env.NODE_ENV == "dev"){
+if(CONST.NODE_ENV == "dev"){
 	console.log(`App >> Now CORS is enabled for any origin...	`)
 	app.use(cors({
 		origin: true,
@@ -131,14 +111,13 @@ app.use('/api', api);
  */
 
 const serveStatic = require('serve-static');
-const CONST = require('./constants.js')
 
 app.use(serveStatic(__dirname + "/dist"));
 
 /**
  * Serving static files from Heroku is not possible. So we have to create a work-around
  */
-if(process.env.NODE_ENV == "dev"){
+if(CONST.NODE_ENV == "dev"){
 
 	app.use("/uploads",serveStatic(__dirname + "/uploads"));
 	app.use("/private",auth.setPrivilegeLevel(CONST.USER_PRIVILEGE_MEMBER),serveStatic(__dirname + "/private"));
@@ -167,7 +146,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if(process.env.NODE_ENV == "dev"){
+if(CONST.NODE_ENV == "dev"){
 	app.use(function(err, req, res, next) {
 		res.status(err.status || 500).json({
 			message: err.message,

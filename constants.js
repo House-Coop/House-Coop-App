@@ -8,6 +8,8 @@
 
 const constants = {
 
+	NODE_ENV: process.env.NODE_ENV,
+
 	// Voting terms
 	VOTING_TERM_WEEK: 1000 * 60 * 60 * 24 * 7, // 1 week
 	VOTING_TERM_DAY: 1000 * 60 * 60 * 24, // 1 day
@@ -48,22 +50,27 @@ const constants = {
 	SESSION_NAME: "eq_id",
 	SESSION_LIFETIME: 1000 * 60 * 60 * 7,
 
+	//SSL LOCAL
+	SSL_CERT_KEY : "./security/local-key.pem",
+	SSL_CERT : "./security/local.pem",
+	SSL_PORT : 443,
+
+	//MONGO LOCAL
+
+	MONGO_SERVER=mongodb://127.0.0.1:27017
+	MONGO_PORT=27017
+	MONGO_DB=equitable_os
 
 	//STUB
-	keypairDemo:{
-		  "public_key": "u64:BE6DzL_bAqmnj23F57-DW6AiQaiM-ighM2p5XmDir__X4aNLOZkYRRvT6pf51niA23xfZiHgic7g0ChA-obiiAb5eokptNLJhygsbTLzPWpCymJyFw-8ra58GEtZKGNPZ5_lL6noxIo1EUMOs8UVtCA",
-          "private_key": "u64:KpxPraZGx8XVDkP2r87UJOd62NGJX6V7HDlF6ukUt23usSmUKVOcI6UPim9S23V5wSaCmjZXLms"
-    },
-
     keypairAdmin:{     
     	"public_key":  process.env.ADMIN_PUBLIC_KEY,
     	"private_key": process.env.ADMIN_PRIVATE_KEY
     },
     zenroomSettings: {
-	    "curve": process.env.ZENROOM_DEFAULTS_CURVE,
-        "encoding": process.env.ZENROOM_DEFAULTS_ENCODING,
-        "version": process.env.ZENROOM_DEFAULTS_VERSION,
-        "scenario": process.env.ZENROOM_DEFAULTS_SCENARIO
+	    "curve": "goldilocks",
+        "encoding": "url64",
+        "version": "1.0.0+4f64c96",
+        "scenario": "simple"
 	}
 
 }
