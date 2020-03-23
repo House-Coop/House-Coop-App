@@ -6,14 +6,19 @@
   "keywords": ["node", "coop", "housing", "democracy"],
   "success_url" : "/register",
   "addons" : [  "mongolab:sandbox"  ],
-  "scripts": {
- 	"postdeploy" : "node install.js"
-  },
   "env" : {
   	"SESSION_SECRET" : {
   		"description": "This gets generated",
          "generator": "secret"
-  	}
+  	},
+  	"ADMIN_PUBLIC_KEY" : {
+  		"description": "Public key from keypair (generate here: www.housecoop.org/generate)",
+        "value": ""
+  	},
+	"ADMIN_PRIVATE_KEY" : {
+  		"description": "Private key from keypair (generate here: www.housecoop.org/generate)",
+        "value": ""
+	}
   }
 
 }
