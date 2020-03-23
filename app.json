@@ -9,6 +9,12 @@
   "scripts": {
  	"postdeploy" : "node install.js"
   },
+  "env" : {
+  	"SESSION_SECRET" : {
+  		"description": "This gets generated",
+         "generator": "secret"
+  	}
+  }
 
 }
 
