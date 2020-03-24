@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "start": "node install.js && env NODE_ENV=production node app.js",
+    "start": "env NODE_ENV=production node app.js",
     "dev": "node install.js && env NODE_ENV=dev nodemon ./bin/www"
   },
   "dependencies": {
