@@ -1,6 +1,5 @@
 //expose the environmental variables
 const env = require('dotenv').config();
-if(env.error) throw new Error(env.error);
 const CONST = require('./constants.js')
 
 //make an instance of express
