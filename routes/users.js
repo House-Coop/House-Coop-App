@@ -14,8 +14,7 @@ const CONST = require("../constants.js");
 */
 
 console.log(`
-	Users (router) >> now just plain register/login/update
-	- confirm email flow for registration
+
 	`)
 
 const User = require('../models/user.js');
@@ -32,9 +31,8 @@ const storage = multer.diskStorage({
 	}
 })
 
-const upload = multer({ 
-	storage: storage
-})
+const upload = multer({ storage: storage });
+console.log(">> users > upload script > ",upload);
 
 //for all these endpoints we set the minimum level to be VISITOR
 

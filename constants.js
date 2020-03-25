@@ -75,6 +75,5 @@ const constants = {
 
 }
 
-console.log(">> Constants > ",constants);
-
+	
 module.exports = constants;

@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "start": "env NODE_ENV=production node app.js",
-    "dev": "node install.js && env NODE_ENV=dev nodemon ./bin/www"
+    "dev": "node install.js && env NODE_ENV=dev PORT=3000 nodemon ./bin/www"
   },
   "dependencies": {
     "@babel/core": "^7.8.3",
