@@ -95,19 +95,15 @@ PORT=/* default is 3000 */
 
 ### Run the application
 
-It's re
+It's recommended to run `npm run dev` once, so a unique keypair is generated in the `.env` file in the root of the project. With `npm start` you start the app in production mode.
 
-The application 
-
-...
+```javascript
+$ npm start
+```
 
 ### Deploy on Heroku
 
-## Front-end
-
-The House.coop app comes wiht a 
-
-## 
+To deploy on Heroku, you can go to http://housecoop.org/install.html and run the installer from there.
 
 ## Contributing
 
@@ -115,6 +111,18 @@ For contributing to this project, please refer to the Bitbucket repository.
 
 ## Authors
 
+House.coop App is a product of House.coop BV based in Rotterdam, the Netherlands.
+
+www.housecoop.org
+
 ## Licence
 
+<img src="https://www.gnu.org/graphics/agplv3-with-text-162x68.png" style="zoom:50%;" /> House.coop App is licenced under [AGPL v3](https://www.gnu.org/licenses/agpl-3.0.en.html) or later.
+
 ## Acknowledgements
+
+<img src="http://housecoop.org/images/ngi-ledger-logo.png" alt="img " style="zoom:15%;" /><img src="http://housecoop.org/images/eu-logo.jpg" alt="img " style="zoom:15%;" />
+
+
+This project has received funding from the European Union’s Horizon 2020 research and innovation programme within the framework of the LEDGER Project funded under grant agreement No825268
+
