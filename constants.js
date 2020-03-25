@@ -61,7 +61,7 @@ const constants = {
 	MONGO_PORT:"27017",
 	MONGO_DB:"equitable_os",
 
-	//STUB
+	//Keypair admin
     keypairAdmin:{     
     	"public_key":  process.env.ADMIN_PUBLIC_KEY,
     	"private_key": process.env.ADMIN_PRIVATE_KEY
@@ -74,5 +74,7 @@ const constants = {
 	}
 
 }
+
+console.log(">> Constants > ",constants);
 
 module.exports = constants;

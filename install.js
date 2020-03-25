@@ -29,15 +29,8 @@ zr.runScript({script: keygen_contract})
 .then((_keys) => {
 	let keys = 'ADMIN_PUBLIC_KEY=' + _keys.Admin.keypair.public_key + "\n";
 		keys +='ADMIN_PRIVATE_KEY=' + _keys.Admin.keypair.private_key;
-		
-
-	//now we got the keys, we append them to the .env file.
-	const fs = require("fs");
-	fs.readFile(".env", (err, data) => {
-		let _data = data || "";
-		if(err){
-			console.log(">> No .env file present");
-		}
+	
+	function appendKeys() {
 		fs.appendFile(".env", keys, err => {
 			if(err){
 				console.log(">> Error when writing .env file", err);
@@ -47,6 +40,17 @@ zr.runScript({script: keygen_contract})
 			process.exit(0);
 
 		})
+	}	
+
+	//now we got the keys, we append them to the .env file.
+	const fs = require("fs");
+	fs.readFile(".env", (err, data) => {
+		let _data = data || "";
+		if(err){
+			console.log(">> No .env file present");
+			return fs.writeFile(".env","",appendKeys);
+		}
+		appendKeys();
 
 	})
 	
